@@ -2,14 +2,14 @@
   "name": "rss-crud-api",
   "version": "0.0.1",
   "description": "RSS CRUD API",
-  "main": "index.ts",
-  "type":"module",
+  "main": "src/index.ts",
+  "type": "module",
   "scripts": {
     "lint": "eslint src/** --fix",
     "build": "webpack --mode=production --node-env=production",
     "start:dev": "cross-env NODE_ENV=development nodemon",
     "start:prod": "npm run build && cross-env NODE_ENV=production node ./dist/index.js",
-    "start:multi": "npm run start:prod -- --multi",
+    "start:multi": "npm run start:dev -- --multi",
     "test": "jest"
   },
   "repository": {

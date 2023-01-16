@@ -1,4 +1,4 @@
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import { ErrorHandler } from './common/error-handler';
 import { startServer } from './common/server';
 

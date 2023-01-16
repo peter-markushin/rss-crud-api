@@ -35,8 +35,4 @@ export class Repository implements EntityRepository<User> {
     public async delete(id: string): Promise<void> {
         await this.dataStore.remove('id', id);
     }
-
-    public async clear(): Promise<void> {
-        await this.dataStore.clear();
-    }
 }

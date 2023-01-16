@@ -1,9 +1,13 @@
 const path = require('path');
+const dotenv = require('dotenv-webpack');
 
 module.exports = {
     target: 'node',
     mode: 'production',
     devtool: 'inline-source-map',
+    plugins: [
+        new dotenv()
+    ],
     entry: {
         main: './src/index.ts',
     },
@@ -20,6 +24,12 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
+                include: [path.resolve(__dirname, './src')],
+                exclude: [
+                    '/node_modules/',
+                    '/build/',
+                    '/__tests__/',
+                ]
             },
         ],
     },

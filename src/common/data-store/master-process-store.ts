@@ -25,10 +25,6 @@ export class MasterProcessStore<Type> implements DataStore<Type> {
         await this.sendCommandToMasterProcess('delete', [value]);
     }
 
-    public async clear(): Promise<void> {
-        return await this.sendCommandToMasterProcess('clearAll');
-    }
-
     public async getAll(): Promise<Type[]> {
         return await this.sendCommandToMasterProcess('findAll');
     }

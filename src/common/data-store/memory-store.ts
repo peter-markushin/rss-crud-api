@@ -26,9 +26,5 @@ export class MemoryStore<Type> implements DataStore<Type> {
         this.items = this.items.filter((item: Type) => item[key] !== value);
     };
 
-    public clear = async (): Promise<void> => {
-        this.items = [];
-    };
-
     public getAll = async (): Promise<Type[]> => this.items;
 }

@@ -4,5 +4,4 @@ export interface Repository<Type> {
     create(obj: Type | Record<keyof Type, any>): Promise<Type>;
     update(id: string, obj: Type): Promise<Type>;
     delete(id: string): Promise<void>;
-    clear(): Promise<void>;
 }

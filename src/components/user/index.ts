@@ -6,7 +6,7 @@ import { MemoryStore } from '../../common/data-store/memory-store';
 import { Repository } from './repository';
 import { MasterProcessStore } from '../../common/data-store/master-process-store';
 
-export const register = async (router: Router, isClusterMode: boolean) => {
+export const register = (router: Router, isClusterMode: boolean): void => {
     let dataStore: DataStore<User>;
 
     if (isClusterMode) {
