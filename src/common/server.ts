@@ -1,4 +1,4 @@
-import { createServer } from 'http';
+import { createServer, Server } from 'http';
 import { cpus } from 'os';
 import cluster from 'node:cluster';
 import * as http from 'http';
@@ -67,12 +67,10 @@ const createLoadBalanser = (port: number): void => {
     }).listen(port);
 };
 
-function startAppServer(port: number, isClusterMode: boolean): void {
-    // eslint-disable-next-line no-console
-    console.debug(`Start server on port ${port}`);
+export function createAppServer(isClusterMode: boolean): Server {
     registerUserModule(router, isClusterMode);
 
-    const server = createServer(
+    return createServer(
         {
             IncomingMessage: Request,
             ServerResponse: Response,
@@ -104,7 +102,13 @@ function startAppServer(port: number, isClusterMode: boolean): void {
             response.end();
         },
     );
-    server.listen(port);
+}
+
+function startAppServer(port: number, isClusterMode: boolean): void {
+    // eslint-disable-next-line no-console
+    console.debug(`Start server on port ${port}`);
+
+    createAppServer(isClusterMode).listen(port);
 }
 
 export const startServer = async (isClusterMode: boolean, basePort: number): Promise<void> => {
